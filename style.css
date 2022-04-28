@@ -1,168 +1,256 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
+
 body {
-	line-height: 1;
-    background-color: white;
+  line-height: 1;
+  background-color: white;
 }
-ol, ul {
-	list-style: none;
+
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-body{
-    display: flex;
-    font-size: 16px;
-    background-color: #2FA4FF;
-    height: 100vh;
-    width: 100vw;
+body {
+  display: flex;
+  font-size: 16px;
+  background-color: #2FA4FF;
+  height: 100vh;
+  width: 100vw;
 }
 
-.header{
-    display: flex;
-    width: 100vw;
-    height: 10vh;
-    background-color:#E8FFC2 ;
-    justify-content: center;
-    align-items: center;
+.header {
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  background-color: #E8FFC2;
+  justify-content: center;
+  align-items: center;
 }
 
-.addBook-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 10vh;
+.addBook-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
 
 }
+
 /* .header .btn{
     
 } */
 
-.logo{
-    font-size: 2rem;
-    font-weight: 700;
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .form-popup {
-    display: none;
-    position: fixed;
-    top: 25vh;
-    left: 45vw;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-  }
+  display: none;
+  position: fixed;
+  top: 25vh;
+  left: 45vw;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
 
-  .form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
-  }
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
 
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
 
-  /* Set a style for the submit/login button */
+/* Set a style for the submit/login button */
 .form-container .btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-  }
-  
-  /* Add a red background color to the cancel button */
-  .form-container .cancel {
-    background-color: red;
-  }
-  
-  /* Add some hover effects to buttons */
-  .form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-  }
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
 
-  .book-grid{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      align-items: center;
-  }
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
 
-  .book-card{
-      display: grid;
-      justify-content: center;
-      align-items: center;
-      height: 250px;
-      background-color: white;
-      border-radius: 20px;
-      margin: 2em;
-  }
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
 
-  .book-card div{
-    display: inline-block;
-  }
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: center;
+}
 
-  .btn-container{
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-  }
+.book-card {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 2em;
+}
 
-  .removeBtn{
-    background-color: red;
-    
-    border: none;
-  }
-  .read{
-    background-color: #2FA4FF;
-    color:white;
-  }
+.book-card div {
+  display: inline-block;
+}
 
-  .unread{
-    background-color: yellow;
-  }
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
 
-  .book-card button{
-    border: none;
-    border-radius: 20px;
-    width: 100px;
-  }
+.removeBtn {
+  background-color: red;
 
-  
+  border: none;
+}
 
+.read {
+  background-color: #2FA4FF;
+  color: white;
+}
+
+.unread {
+  background-color: yellow;
+}
+
+.book-card button {
+  border: none;
+  border-radius: 20px;
+  width: 100px;
+}

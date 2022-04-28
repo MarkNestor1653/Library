@@ -1,15 +1,42 @@
-let myLibrary = [];  //array to store all book objects
 
-function Book(title, author, pages, isRead) { //constructor for making new book objects
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.info = function () {
+class Book {
+    constructor(title, author, pages, isRead) {  //constructor for making new book objects
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
+
+    info() {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead}`;
     }
 }
 
+class Library {
+    constructor() {
+        this.books = [];
+    }
+
+    addBook(newBook) {
+        if (!this.isInLibrary(newBook)) {
+            this.books.push(newBook)
+        }
+    }
+
+    removeBook(title) {
+        this.books = this.books.filter((book) => book.title !== title)
+    }
+
+    getBook(title) {
+        return this.books.find((book) => book.title = title)
+    }
+
+    isInLibrary(newBook) {
+        return this.books.some((book) => book.title === newBook.title)
+    }
+}
+
+const library = new Library();
 const submitFormButton = document.getElementById('SubmitFormBtn');
 const formElem = document.querySelector('form');
 
@@ -23,18 +50,22 @@ formElem.addEventListener('submit', (e) => {
 
 formElem.addEventListener('formdata', (e) => {
     console.log('formdata fired');
-    addBook(e.formData);
+    addNewBook(e.formData);
     // Get the form data from the event object
 
 });
 
-function addBook(formData) {
+function addNewBook(formData) {
 
-    if (checkDuplicate(formData.get('title')) === 1) {
-        console.log('exists')
-        return alert('This book already exists in your library')
+    // if (checkDuplicate(formData.get('title')) === 1) {
+    //     console.log('exists')
+    //     return alert('This book already exists in your library')
+    // }
+    //************************************************************************************************************* */
+    if (library.isInLibrary(formData.get('title'))) {//isInLibrary
+        alert('book already in library')
+        return
     }
-
     let isRead;
 
     if (formData.get('readStatus') === 'on') {
@@ -50,7 +81,7 @@ function addBook(formData) {
         isRead
     );
     //add book object to library array
-    myLibrary.push(newBook);
+    library.addBook(newBook);
     closeForm();
     loopArray();
 }
@@ -58,29 +89,29 @@ function addBook(formData) {
 //create a data attribute corresponding to objects index position in array
 //used to locate book for removal
 function assignID(title) {
-    const index = myLibrary.findIndex(book => book.title == title);
+    const index = library.books.findIndex(book => book.title == title);
     return index;
 }
 
 //clears and sets the library grid
 function loopArray() {
     clearGrid();
-    myLibrary.forEach(book => {
+    library.books.forEach(book => {
         let identity = assignID(book.title);
         addBookCard(book.title, book.author, book.pages, book.isRead, identity)
     })
 }
 
 //function that checks for book titles, preventing duplicate books in library.
-function checkDuplicate(newTitle) {
-    let found = myLibrary.find(book => book.title === newTitle);
-    if (found === undefined) {
-        return
-    }
-    if (newTitle === found.title) {
-        return 1;
-    }
-}
+// function checkDuplicate(newTitle) {
+//     let found = myLibrary.find(book => book.title === newTitle);
+//     if (found === undefined) {
+//         return
+//     }
+//     if (newTitle === found.title) {
+//         return 1;
+//     }
+// }
 
 //creates elements for book cards and adds the text
 function addBookCard(title, author, pages, isRead, identity) {
@@ -104,8 +135,8 @@ function addBookCard(title, author, pages, isRead, identity) {
 
     bookCard.setAttribute('data-id', identity);
 
-    bookTitle.textContent = 'Title: ' + title;
-    bookAuthor.textContent = 'Author: ' + author;
+    bookTitle.textContent = title;//'Title: ' +
+    bookAuthor.textContent = author;//'Author: ' +
     bookPages.textContent = 'Pages: ' + pages;
     bookReadStatus.innerHTML = isRead;
     removeBtn.innerHTML = 'Remove';
@@ -135,20 +166,26 @@ function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 
-
+//************************************************************************************************************* */
 const removeBook = (e) => {
     //get data attribute
-    const index = e.target.parentNode.parentNode.getAttribute('data-id');
-    console.log(index);
+    //const index = e.target.parentNode.parentNode.getAttribute('data-id');
+    //console.log(index);
     //look for object with corresponding index
-    console.log(myLibrary.splice(index, 1));
+    //console.log(myLibrary.splice(index, 1));
+    console.log(e.target.parentNode.parentNode.firstChild.innerHTML)
+    const title = e.target.parentNode.parentNode.firstChild.innerHTML//.replaceAll(
+    //    '"',
+    //    ''
+    //)
+    library.removeBook(title);
     loopArray();
 }
 
 const changeStatus = (e) => {
     //changes readStatus to off
     const index = e.target.parentNode.parentNode.getAttribute('data-id');
-    myLibrary[index].isRead = !myLibrary[index].isRead;
+    library.books[index].isRead = !library.books[index].isRead;
     loopArray();
 }
 
